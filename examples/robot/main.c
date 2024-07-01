@@ -1,7 +1,7 @@
-// serialio - demonstrate how to successfully read a line of text and
-// use STRTOK() to split the line into tokens (or words)
+// Move a robot arm by tokeing commands from the uesr input
+// use strtok to split the input into tokens
+// define the parameters for the robot arm as it is helpful for the user to understand commands
 
-//test2
 #include <stdio.h>
 #include <string.h>
 #include "uart.h"
@@ -17,9 +17,8 @@ int main(void) {
     char input[MAX_BUFFER + 1] = {};
     char delims[MAX_DELIMS + 1] = {"a"};
 
-    puts("Serial I/O Test: readLine with tokens");
-    printf("Enter text up to %i characters, or end w/ CR\n", MAX_BUFFER);
-    printf("Line will be parsed into tokens\n");
+    puts("Move xArm using tokenization");
+    printf("Enter cmd, ditance, direction, and joint:\n");
     printf("Possible delimitors are (w/ ASCII code): ");
     for (uint8_t delim=0; delim < MAX_DELIMS; delim++)
     {
