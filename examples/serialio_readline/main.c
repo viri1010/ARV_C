@@ -1,6 +1,6 @@
-//Move a robot arm by tokeing commands from the uesr input
-//use strtok to split the input into tokens
-//define the parameters for the robot arm as it is helpful for the user to understand commands
+// Move a robot arm by tokeing commands from the user input
+// use strtok to split the input into tokens
+// save input into tokens and therefore control the arm
 
 #include <stdio.h>
 #include <string.h>
@@ -16,13 +16,14 @@ int main(void) {
 
     init_serial();
     char input[MAX_BUFFER + 1] = {};
-    char delims[MAX_DELIMS + 1] = {" "};
+    char delims[MAX_DELIMS + 1] = {" "}; // space used as delimiter
 
     puts("Move xArm using tokenization");
     printf("Enter cmd, distance, direction, and joint : ");
+    printf("Possible delimitors are (w/ ASCII code): ");
     for (uint8_t delim=0; delim < MAX_DELIMS; delim++)
     {
-        printf("'%c' 0x%x ", delims[delim], delims[delim]);
+        printf("' ' 0x%x ", delims[delim], delims[delim]); // shows the user what is the delimeter
     }
     printf("\n");
     uint8_t num_char = readLine(input, MAX_BUFFER);
